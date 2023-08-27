@@ -1,0 +1,48 @@
+Merge Two Sorted Arrays
+Easy
+30 / 30
+Given two sorted arrays A and B, find the merged sorted array C by merging A and B.
+
+Example:
+A: [1, 2, 3, 4, 4]
+B: [2, 4, 5, 5]
+C: [1, 2, 2, 3, 4, 4, 4, 5, 5]
+
+class Solution:
+	def mergeSortedArrays(self, A: List[int], B: List[int]) -> List[int]:
+		# add your logic here
+		C = [0] * (len(A) + len(B))
+		
+		p = q = k = 0
+		
+		
+		while p < len(A) and q < len(B):
+			if A[p] < B[q]:
+				C[k] = A[p]
+				p += 1
+				k += 1
+			elif A[p] > B[q]:
+				C[k] = B[q]
+				q += 1
+				k += 1
+			else:
+				C[k] = A[p]
+				k += 1
+				p += 1
+				C[k] = B[q]
+				k += 1
+				q += 1
+		
+		while p < len(A):
+			C[k] = A[p]
+			k += 1
+			p += 1
+		
+		while q < len(B):
+			C[k] = B[q]
+			k += 1
+			q += 1
+		return C
+			
+
+

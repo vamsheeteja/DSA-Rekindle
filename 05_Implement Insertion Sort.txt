@@ -1,0 +1,24 @@
+Implement Insertion Sort
+Easy
+30 / 30
+Given an array, sort it using insertion sort.
+
+Testing
+Input Format
+The first line contains 'T' denoting the no. of test cases.
+
+Next T lines each contain a number 'n' denoting the number of elements, followed by n space-separated numbers denoting the array elements.
+
+class Solution:
+	def insertionSort(self, arr: List[int]) -> List[int]:
+		# add your logic here
+		
+		for i in range(1, len(arr)):
+			currentElement = arr[i]
+			prevPosition = i - 1
+			while prevPosition >= 0 and currentElement < arr[prevPosition]:
+				arr[prevPosition+1] = arr[prevPosition]
+				prevPosition -= 1
+			arr[prevPosition+1] = currentElement
+			
+		return arr
