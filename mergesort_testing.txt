@@ -1,0 +1,102 @@
+
+Date: 19/10/23 
+
+# quick link: https://onecompiler.com/python/3zmqn3hnb
+
+
+# Python program for implementation of MergeSort
+
+
+def printFunc(var, val):
+  print("{} = {}".format(var, val))
+
+count = 0
+
+def mergeSort(arr):
+	global count
+	count += 1
+	printFunc("count", count)
+	if len(arr) > 1:
+	  
+	  
+	  # Finding the mid of the array
+	  mid = len(arr)//2
+	  printFunc("mid index ", mid)
+	  printFunc("mid val", arr[mid])
+	  # Dividing the array elements
+	  L = arr[:mid] # here mid is acting like mid - 1 ie slicing
+	  printFunc("left arr", L)
+	  # Into 2 halves
+	  R = arr[mid:]
+	  printFunc("right arr", R)
+	  print("Calling mergesort({}) (left)".format(L))
+	  print("------>")
+	  # Sorting the first half
+	  mergeSort(L)
+	  print("mergeSort(L) over")
+	  
+	  count -= 1
+	  
+	  print("count became = ", count)
+	  print("----->")
+	  print("Calling mergesort({}) (right)".format(R))
+	  
+	  # Sorting the second half
+	  mergeSort(R)
+	  count -= 1 
+	  print("count", count)
+	  print("mergesort(R) over")
+	  print("L=", L)
+	  print("R=", R)
+	  print("Started merging...")
+	  i = j = k = 0
+	  # Copy data to temp arrays L[] and R[]
+	  
+	  while i < len(L) and j < len(R):
+	    if L[i] <= R[j]:
+	      arr[k] = L[i]
+	      i += 1
+	    else:
+	      arr[k] = R[j]
+	      j += 1
+	    k += 1
+	  # Checking if any element was left
+	  while i < len(L):
+	    arr[k] = L[i]
+	    i += 1
+	    k += 1
+	  while j < len(R):
+	   arr[k] = R[j]
+	   j += 1
+	   k += 1
+	  print("L=", L)
+	  print("R=", R)
+	  print("merging completed.")
+	  print("arr=", arr)
+	  
+	  print("--After L and R are sorted ....------>")
+	  printFunc("L", L)
+	  printFunc("R", R)
+	  
+	  print()
+
+# Code to print the list
+def printList(arr):
+	for i in range(len(arr)):
+		print(arr[i], end=" ")
+	print()
+
+
+# Driver Code
+if __name__ == '__main__':
+	arr = [12, 13, 11, 5, 6, 7]
+	print("Given array is")
+	printList(arr)
+	print("calling mergeSort({})".format(arr))
+	print()
+	mergeSort(arr)
+	print("\nSorted array is ")
+	printList(arr)
+	
+  
+# This code is contributed by Mayank Khanna
